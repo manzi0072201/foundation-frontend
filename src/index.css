@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --srms-ink: #1c1b1f;
+  --srms-ink-soft: #4b4a4f;
+  --srms-sand: #f7f1e9;
+  --srms-amber: #f08a5d;
+  --srms-forest: #3a5a40;
+  --srms-clay: #d9c3a3;
+  --srms-shadow: 0 24px 60px rgba(20, 14, 10, 0.12);
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  color: var(--srms-ink);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(240, 138, 93, 0.2), transparent 45%),
+    radial-gradient(circle at 85% 12%, rgba(58, 90, 64, 0.18), transparent 40%),
+    var(--srms-sand);
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.shadow-srms {
+  box-shadow: var(--srms-shadow);
+}
+
+.animate-rise {
+  animation: rise 0.6s ease-out both;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
