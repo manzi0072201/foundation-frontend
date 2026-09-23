@@ -1,45 +1,53 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import Logo, { LogoMark } from '../components/Logo'
+import { LogoMark } from '../components/Logo'
+import { org, pillars } from '../data/site'
 
 const valuesList = [
-  { mark: '01', title: 'Community', text: 'We work with people, not for them. Every program starts with a shared table and a real need.' },
-  { mark: '02', title: 'Education', text: 'A classroom is the strongest foundation a future can stand on. We build them, stock them and staff them.' },
-  { mark: '03', title: 'Compassion', text: 'We meet families where they are — with patience, dignity and without judgment.' },
-  { mark: '04', title: 'Growth', text: 'We plant today what a community will harvest for generations.' },
-  { mark: '05', title: 'Integrity', text: 'Every donation is accounted for and every promise is kept. Trust is our capital.' },
-  { mark: '06', title: 'Innovation', text: 'We try new ideas, keep what works and share it with others.' }
+  { mark: '01', title: 'Faith & Purpose', text: 'Faith is the foundation of character, discipline, hope and purpose — and it is demonstrated through action.' },
+  { mark: '02', title: 'Compassion & Service', text: 'We serve people living around us — vulnerable families, students and neighbours — with love and without judgment.' },
+  { mark: '03', title: 'Unity & Shared Responsibility', text: 'Our strength depends on a strong committee, shared responsibility, unity and active participation from every member.' },
+  { mark: '04', title: 'Youth Leadership', text: 'Young people are not merely beneficiaries of development — they are contributors and leaders of the future.' },
+  { mark: '05', title: 'Continuity', text: 'Each generation receives the vision, improves it for its time, and passes it on to the next.' },
+  { mark: '06', title: 'Integrity & Accountability', text: 'Decisions are taken in the open, resources are managed transparently, and every promise is kept.' }
 ]
 
 const programsBridge = [
-  { to: '/programs/school-programs', tag: 'School Support', text: 'Classrooms, books, teacher training and meals so children can learn with dignity.' },
-  { to: '/programs/youth-development', tag: 'Youth Development', text: 'Mentorship, leadership camps and vocational skills for young people.' },
-  { to: '/programs/family-community', tag: 'Family Support', text: 'Food security gardens, skills workshops and family counselling.' },
-  { to: '/get-involved/support', tag: 'Community Initiatives', text: 'Events, drives and volunteer days that bring neighbours together.' }
+  { to: pillars[0].to, tag: pillars[0].tag, text: pillars[0].summary },
+  { to: pillars[1].to, tag: pillars[1].tag, text: pillars[1].summary },
+  { to: pillars[2].to, tag: pillars[2].tag, text: pillars[2].summary },
+  { to: pillars[3].to, tag: pillars[3].tag, text: pillars[3].summary }
 ]
 
 const approachSteps = [
-  { step: '01', title: 'Listen', text: 'We begin in the community itself, understanding the needs of schools, families and young people.' },
-  { step: '02', title: 'Partner', text: 'We work alongside schools, families, businesses and local leaders as equal partners.' },
-  { step: '03', title: 'Act', text: 'We turn understanding into practical programs — building, teaching, supporting.' },
-  { step: '04', title: 'Measure', text: 'We track outcomes, learn from results and share them openly with our supporters.' }
+  { step: '01', title: 'Listen', text: 'We begin in the community itself — with schools, families and young people telling us what they truly need.' },
+  { step: '02', title: 'Partner', text: 'We work alongside local authorities, schools, communities and institutions as equal partners, complementing existing programs.' },
+  { step: '03', title: 'Act', text: 'Teach → Reflect → Mentor → Practice → Serve → Lead → Inspire. We turn values into practical service.' },
+  { step: '04', title: 'Measure', text: 'We track our activities, learn from results and share them openly with supporters and partners.' }
 ]
 
 const storyTimeline = [
-  { year: '2011', title: 'A kitchen table, a shared idea', text: 'A few neighbours meet at a kitchen table, worried about children missing school after the rains destroyed their classroom.' },
-  { year: '2013', title: 'First school block rebuilt', text: 'Hands and shovels go to work. Fifty children walk back into a classroom with tables, books and a roof.' },
-  { year: '2016', title: 'Families join the mission', text: 'Gardens, skills workshops and food sharing extend the work beyond the school gate and into homes.' },
-  { year: '2019', title: 'Youth development grows', text: 'Mentorship, camps and vocational training give young people a place at the table.' },
-  { year: '2026', title: '120+ active volunteers', text: 'What began at one kitchen table is now a movement carried by hundreds of hands.' }
+  { year: '2017', title: 'It begins at Muhazi Secondary School', text: 'A group of students, initially led by Umutesi Denyse, start serving people living around the school — beginning with school materials for vulnerable students and community members.' },
+  { year: '2018', title: 'The vision is passed on', text: 'Nsabimana Jean Marie and Queen Kelly take over, continuing the spirit of service and turning a group of friends into a community of young people creating change together.' },
+  { year: '2020', title: 'Shared leadership takes root', text: 'Muhire Janvier and Queen Kelly reorganize the group with friends Aman, Valantin and Emmanuel, establishing a committee of 16 members so no single person carries everything.' },
+  { year: '2021', title: 'Service grows in the community', text: 'Members establish kitchen gardens (uturima tw’igikoni), support poor families with food, and organize activities that strengthen community relationships.' },
+  { year: '2025', title: 'A foundation is born', text: 'Nine active members reconnect and transform the long-standing student initiative into a community-based foundation: By Our Hands We Can.' },
+  { year: '2026', title: 'Building the foundation', text: 'The foundation begins its first year of programs across four pillars — Faith, Helping Others, Youth Transformation, and Talent & ICT.' }
 ]
 
-const teamMembers = [1, 2, 3, 4, 5, 6]
+const teamMembers = [
+  { name: org.executiveDirector, role: 'Executive Director / President' },
+  { name: 'Vice President', role: 'Deputy Executive Director' },
+  { name: 'Secretary General', role: 'Communications & Records' },
+  { name: 'Treasurer', role: 'Finance Officer' },
+  { name: 'Program Directors', role: 'Faith · Service · Youth · Talent & ICT' },
+  { name: 'Monitoring & Media', role: 'M&E Officer · Communication Officer' }
+]
 
 const partnersCount = 6
 
 const About = () => {
   const { pathname } = useLocation()
-  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const sectionId = pathname.replace('/about', '').split('/').filter(Boolean).pop()
@@ -62,14 +70,15 @@ const About = () => {
                 About Us
               </p>
               <h1 className="mt-8 text-4xl font-semibold leading-[1.05] tracking-tight text-srms-ink sm:text-6xl">
-                Together, We Build
+                Building a Better Future
                 <br />
-                <span className="text-srms-forest">Stronger Futures</span>
+                <span className="text-srms-forest">Through Generational Empowerment</span>
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-srms-ink-soft">
-                Foundation By Our Hands is a community-driven organization
-                working with schools, families and communities to create
-                meaningful opportunities for children and young people.
+                {org.name} is a youth-led community foundation rooted in a
+                student initiative from 2017 — working across faith, service,
+                youth transformation and talent &amp; ICT to empower young
+                people and communities.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link to="/programs" className="rounded-full bg-srms-amber px-7 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5">
@@ -91,7 +100,7 @@ const About = () => {
                     Foundation
                   </p>
                   <p className="mt-1 text-center text-[11px] uppercase tracking-[0.32em] text-srms-sand/75">
-                    By Our Hands
+                    By Our Hands We Can
                   </p>
                 </div>
               </div>
@@ -126,19 +135,24 @@ const About = () => {
               </h2>
               <div className="mt-6 space-y-4 leading-relaxed text-srms-ink-soft">
                 <p>
-                  Foundation By Our Hands is a community-focused organization
-                  working with schools, families and communities to create
-                  meaningful opportunities for children and young people.
+                  {org.name} is a youth-led community empowerment foundation
+                  whose roots date back to 2017, when a group of students at
+                  Muhazi Secondary School came together with a shared desire to
+                  serve others and create positive change.
                 </p>
                 <p>
-                  We were established to answer a simple question: what happens
-                  when a community refuses to wait for help and builds with what
-                  it already has? Today we serve children, families and schools
-                  across the regions we call home.
+                  Over the years, leadership was passed from one generation of
+                  students to another — building a strong committee of 16
+                  members and a culture of unity, service and shared
+                  responsibility. In 2025, nine active members transformed this
+                  long-standing student initiative into a broader
+                  community-based foundation.
                 </p>
                 <p>
                   What makes us different is how we work — not handing things
-                  down, but sitting together and building up, hand by hand.
+                  down, but sitting together and building up, hand by hand. Our
+                  journey shows that meaningful change can begin with a small
+                  group of young people who are willing to act.
                 </p>
               </div>
             </div>
@@ -194,16 +208,19 @@ const About = () => {
               <p className="font-mono text-sm font-semibold text-srms-forest">Mission</p>
               <h3 className="mt-3 text-2xl font-semibold text-srms-ink">What we do</h3>
               <p className="mt-4 text-sm leading-relaxed text-srms-ink-soft">
-                To build schools, strengthen families and grow youth leadership
-                — hand in hand with the communities we serve.
+                To empower young people through faith, community service,
+                transformation and talent &amp; ICT — so they develop positive
+                values, leadership abilities, practical skills and digital
+                competencies, and contribute actively to the development of
+                their families, communities and country.
               </p>
             </div>
             <div className="rounded-3xl border border-srms-clay/70 bg-srms-forest p-10 text-srms-sand shadow-srms">
               <p className="font-mono text-sm font-semibold text-srms-amber">Vision</p>
               <h3 className="mt-3 text-2xl font-semibold text-srms-sand">Where we are going</h3>
               <p className="mt-4 text-sm leading-relaxed text-srms-sand/80">
-                A generation of children who learn, lead and lift — in
-                communities that build their own future by our hands.
+                "{org.vision}" A generation that does not wait for change, but
+                actively participates in creating it.
               </p>
             </div>
           </div>
@@ -282,8 +299,8 @@ const About = () => {
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {teamMembers.map((n) => (
-              <div key={n} className="group overflow-hidden rounded-3xl border border-srms-clay/70 bg-white transition hover:-translate-y-0.5 hover:shadow-srms">
+            {teamMembers.map((member) => (
+              <div key={member.name} className="group overflow-hidden rounded-3xl border border-srms-clay/70 bg-white transition hover:-translate-y-0.5 hover:shadow-srms">
                 <div className="relative flex h-64 items-center justify-center bg-srms-clay/20">
                   <div className="flex h-24 w-24 items-center justify-center rounded-2xl border-2 border-dashed border-srms-clay/70 bg-white/70">
                     <svg viewBox="0 0 24 24" className="h-10 w-10 opacity-40" fill="none" stroke="currentColor" strokeWidth="1.4">
@@ -292,16 +309,21 @@ const About = () => {
                     </svg>
                   </div>
                   <span className="absolute bottom-3 right-3 rounded-full bg-white/85 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-srms-ink-soft">
-                    Team Member {n} — photo coming soon
+                    Photo coming soon
                   </span>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold text-srms-ink">Person {n}</h3>
-                  <p className="mt-1 text-sm text-srms-forest">Title / Role</p>
+                  <h3 className="text-lg font-semibold text-srms-ink">{member.name}</h3>
+                  <p className="mt-1 text-sm text-srms-forest">{member.role}</p>
                 </div>
               </div>
             ))}
           </div>
+          <p className="mt-6 text-sm leading-relaxed text-srms-ink-soft">
+            Our foundation runs on shared leadership — responsibilities are
+            distributed across a committee rather than depending on one person,
+            following the structure our students established in the early years.
+          </p>
         </div>
       </section>
 
@@ -335,21 +357,22 @@ const About = () => {
             <h2 className="mt-3 text-3xl font-semibold text-srms-sand">Hands working, together</h2>
             <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-3">
               <div className="rounded-3xl bg-white/10 p-8">
-                <p className="text-4xl font-semibold text-srms-sand">6,400+</p>
-                <p className="mt-2 text-sm text-srms-sand/75">Children enrolled in schools</p>
+                <p className="text-4xl font-semibold text-srms-sand">2017</p>
+                <p className="mt-2 text-sm text-srms-sand/75">A student initiative begins</p>
               </div>
               <div className="rounded-3xl bg-white/10 p-8">
-                <p className="text-4xl font-semibold text-srms-sand">12,000+</p>
-                <p className="mt-2 text-sm text-srms-sand/75">Students & families reached</p>
+                <p className="text-4xl font-semibold text-srms-sand">16</p>
+                <p className="mt-2 text-sm text-srms-sand/75">Members on our shared committee</p>
               </div>
               <div className="rounded-3xl bg-white/10 p-8">
-                <p className="text-4xl font-semibold text-srms-sand">87</p>
-                <p className="mt-2 text-sm text-srms-sand/75">Projects completed</p>
+                <p className="text-4xl font-semibold text-srms-sand">4</p>
+                <p className="mt-2 text-sm text-srms-sand/75">Pillars of our work</p>
               </div>
             </div>
             <p className="mx-auto mt-8 max-w-xl text-xs text-srms-sand/60">
-              Figures shown reflect our verified program records and are
-              reviewed with our team before publication.
+              Our journey from a student initiative to a foundation is built on
+              continuity, youth leadership, shared responsibility and community
+              service.
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import Logo from './Logo'
+import { contact } from '../data/site'
 
 const linkLists = [
   {
@@ -16,9 +17,10 @@ const linkLists = [
   {
     title: 'Our Programs',
     links: [
-      { label: 'School Programs', to: '/programs/school-programs' },
-      { label: 'Family & Community Support', to: '/programs/family-community' },
-      { label: 'Youth Development', to: '/programs/youth-development' },
+      { label: 'Faith & Prayer', to: '/programs/faith-prayer' },
+      { label: 'Helping Others', to: '/programs/helping-others' },
+      { label: 'Youth Transformation', to: '/programs/youth-transformation' },
+      { label: 'Talent & ICT', to: '/programs/talent-ict' },
       { label: 'All Programs', to: '/programs' }
     ]
   },
@@ -94,9 +96,8 @@ const Footer = () => (
             markClassName="!bg-srms-sand/15"
           />
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-srms-sand/80">
-            We are a grassroots nonprofit building schools, strengthening
-            families, and growing opportunities for young people — one
-            community at a time.
+            We are a youth-led community foundation growing faith, service,
+            transformation and talent &amp; ICT — one hand at a time.
           </p>
 
           <div className="mt-7 flex items-center gap-3">
@@ -140,16 +141,16 @@ const Footer = () => (
             Contact
           </h4>
           <p className="mt-3 text-sm text-srms-sand/85">
-            hello@foundationbyourhands.org
+            {contact.email}
           </p>
-          <p className="mt-1 text-sm text-srms-sand/85">+250 700 000 000</p>
+          <p className="mt-1 text-sm text-srms-sand/85">{contact.phone}</p>
         </div>
         <div>
           <h4 className="text-xs uppercase tracking-[0.3em] text-srms-sand/60">
             Visit Us
           </h4>
           <p className="mt-3 text-sm text-srms-sand/85">
-            ES MUHAZI — EAST, Rwamagana
+            {contact.address}
           </p>
           <p className="mt-1 text-sm text-srms-sand/85">
             Mon – Fri, 8:00 – 17:00

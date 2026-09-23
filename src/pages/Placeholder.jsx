@@ -1,10 +1,9 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import Logo from '../components/Logo'
 import { LogoMark } from '../components/Logo'
 
 const pageMap = {
   '/about': { tag: 'About Us', title: 'About Us', text: 'Who we are and why we exist.' },
-  '/programs': { tag: 'Programs', title: 'Our Programs', text: 'Everything we do across schools, families and youth.' },
+  '/programs': { tag: 'Programs', title: 'Our Programs', text: 'Our four pillars: Faith & Prayer, Helping Others, Youth Transformation, and Talent & ICT.' },
   '/impact': { tag: 'Impact', title: 'Our Impact', text: 'The communities changed by our work.' },
   '/news': { tag: 'News', title: 'News & Events', text: 'Updates, stories and activities from our programs.' },
   '/news/latest': { tag: 'News', title: 'Latest News', text: 'The most recent reports from the field.' },
@@ -21,7 +20,7 @@ const pageMap = {
 
 const fallbackGroups = [
   { key: 'About', items: ['our-story', 'mission-vision', 'our-values', 'our-team'] },
-  { key: 'Programs', items: ['school-programs', 'family-community', 'youth-development'] },
+  { key: 'Programs', items: ['faith-prayer', 'helping-others', 'youth-transformation', 'talent-ict'] },
   { key: 'Get Involved', items: ['volunteer', 'partner', 'support', 'donate'] }
 ]
 

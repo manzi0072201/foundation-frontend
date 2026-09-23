@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Logo, { LogoMark } from './Logo'
 
 const navItems = [
@@ -19,9 +19,10 @@ const navItems = [
     to: '/programs',
     children: [
       { label: 'All Programs', to: '/programs' },
-      { label: 'School Programs', to: '/programs/school-programs' },
-      { label: 'Family & Community Support', to: '/programs/family-community' },
-      { label: 'Youth Development', to: '/programs/youth-development' }
+      { label: 'Faith & Prayer', to: '/programs/faith-prayer' },
+      { label: 'Helping Others', to: '/programs/helping-others' },
+      { label: 'Youth Transformation', to: '/programs/youth-transformation' },
+      { label: 'Talent & ICT', to: '/programs/talent-ict' }
     ]
   },
   { label: 'Our Impact', to: '/impact' },
@@ -31,7 +32,6 @@ const navItems = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
-  const [aboutOpen, setAboutOpen] = useState(false)
   const toggle = () => setOpen((prev) => !prev)
   const close = () => setOpen(false)
 

@@ -3,19 +3,7 @@ const LogoMark = ({ className = 'h-9 w-9' }) => (
     className={`inline-flex items-center justify-center overflow-hidden rounded-2xl bg-srms-forest ${className}`}
     aria-hidden="true"
   >
-    <svg viewBox="0 0 44 44" className="h-full w-full">
-      <path
-        d="M22 13.5C19.4 11 15.5 11.6 15.5 15c0 3 3.3 5.2 6.5 8 3.2-2.8 6.5-5 6.5-8 0-3.4-3.9-4-6.5-1.5Z"
-        fill="#f08a5d"
-      />
-      <path
-        d="M10 31c.8-2.6 2.2-4.1 4.3-4.5M34 31c-.8-2.6-2.2-4.1-4.3-4.5M11.4 34.8c.9-2.4 2.2-3.6 4.2-3.9M32.6 34.8c-.9-2.4-2.2-3.6-4.2-3.9"
-        stroke="#f7f1e9"
-        strokeWidth="2.6"
-        strokeLinecap="round"
-        fill="none"
-      />
-    </svg>
+    <img src="/logo.jpeg" alt="" className="h-full w-full object-cover" />
   </span>
 )
 

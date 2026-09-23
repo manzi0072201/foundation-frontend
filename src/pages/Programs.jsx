@@ -1,58 +1,32 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import Logo, { LogoMark } from '../components/Logo'
-
-const programCards = [
-  {
-    to: '/programs/school-programs',
-    mark: '01',
-    tag: 'School Programs',
-    summary: 'Classrooms, books, teacher training and meals so children can learn with dignity.',
-    list: ['Build & renovate classrooms', 'Supply books, desks and learning materials', 'Train teachers & support school feeding']
-  },
-  {
-    to: '/programs/family-community',
-    mark: '02',
-    tag: 'Family & Community Support',
-    summary: 'Gardens, skills workshops and family counselling that strengthen homes and neighbourhoods.',
-    list: ['Food security gardens', 'Skills & livelihood workshops', 'Family counselling and home visits']
-  },
-  {
-    to: '/programs/youth-development',
-    mark: '03',
-    tag: 'Youth Development',
-    summary: 'Mentorship, leadership camps and vocational training that grow young people into leaders.',
-    list: ['Mentorship & role models', 'Leadership camps & clubs', 'Vocational & life-skills training']
-  }
-]
+import { LogoMark } from '../components/Logo'
+import { org, pillars } from '../data/site'
 
 const howWeWork = [
-  { step: '01', title: 'Listen', text: 'We begin in the community itself — schools tell us what they truly need.' },
-  { step: '02', title: 'Partner', text: 'We work alongside schools, families, businesses and local leaders as equals.' },
-  { step: '03', title: 'Act', text: 'We turn understanding into practical programs — building, teaching, supporting.' },
-  { step: '04', title: 'Measure', text: 'We track outcomes, learn from results and share them openly with supporters.' }
+  { step: '01', title: 'Listen & Mobilize', text: 'We begin in the community — schools, families and young people tell us what they truly need, and we mobilize our members around it.' },
+  { step: '02', title: 'Serve Together', text: 'We put our values into action: Umuganda, supporting vulnerable families, school-material support and kitchen gardens.' },
+  { step: '03', title: 'Develop Skills & Talent', text: 'We train young people in leadership, life skills, talents and ICT so they can grow, create and contribute.' },
+  { step: '04', title: 'Measure & Pass On', text: 'We track results, learn and share openly — and we pass the vision on to the next generation, as we have since 2017.' }
 ]
 
 const servedGroups = [
-  { mark: '🎒', title: 'Students', text: 'Children and young people learning in the schools we support.' },
-  { mark: '🏫', title: 'Schools', text: 'Classrooms, staff and leadership teams we build and strengthen alongside.' },
-  { mark: '👨‍👩‍👧', title: 'Families', text: 'Parents and carers working with us to keep children in school and fed.' },
-  { mark: '🌍', title: 'Communities', text: 'Neighbours, faith groups, businesses and local leaders who carry the work.' }
+  { title: 'Young People', text: 'The main beneficiaries — gaining leadership, ICT, mentorship, talent development, innovation and community-service opportunities.' },
+  { title: 'Students', text: 'Students from disadvantaged backgrounds receive school materials, mentorship, educational support and talent activities.' },
+  { title: 'Vulnerable Families', text: 'Families facing social or economic challenges receive community support, school assistance and kitchen-garden initiatives.' },
+  { title: 'Schools & Communities', text: 'Schools gain better-supported students and youth activities, while the wider community gains responsible, skilled young people.' }
 ]
 
 const impactStats = [
-  { value: '12', label: 'Schools reached' },
-  { value: '6,400+', label: 'Children enrolled' },
-  { value: '87', label: 'Projects completed' }
+  { value: '4', label: 'Interconnected program pillars' },
+  { value: '9', label: 'Founding members, 2025' },
+  { value: '2M RWF', label: 'Budget committed to our first year' }
 ]
 
-const storiesList = ['Story 1', 'Story 2', 'Story 3']
-
-const miniStat = [
-  { value: '01', label: 'Listen' },
-  { value: '02', label: 'Partner' },
-  { value: '03', label: 'Act' },
-  { value: '04', label: 'Measure' }
+const storiesList = [
+  'From kitchen garden to family support',
+  'A young person who found their talent',
+  'Umuganda, in our own hands'
 ]
 
 const Programs = () => {
@@ -77,14 +51,14 @@ const Programs = () => {
             Our Programs
           </p>
           <h1 className="mt-8 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight text-srms-ink sm:text-7xl">
-            Creating Opportunities.
+            Empowering Generation.
             <br />
-            <span className="text-srms-forest">Strengthening Communities.</span>
+            <span className="text-srms-forest">Building Better Future.</span>
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-relaxed text-srms-ink-soft">
-            We work with schools, families and communities through programs
-            designed to support and empower young people — planned hand in hand
-            with the people we serve.
+            {org.name} works through four interconnected pillars — Faith,
+            Helping Others, Youth Transformation, and Talent &amp; ICT — each
+            planned hand in hand with the young people and communities we serve.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -103,16 +77,24 @@ const Programs = () => {
       <section id="program-cards" className="px-4 py-14 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-forest">What We Do</p>
-          <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Our programs, at a glance</h2>
+          <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Our four pillars, at a glance</h2>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {programCards.map((card) => (
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {pillars.map((card) => (
               <Link key={card.to} to={card.to} className="group rounded-[2.5rem] border border-srms-clay/70 bg-white p-8 transition hover:-translate-y-1 hover:shadow-srms">
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-srms-sand text-center">
                   <span className="font-mono text-lg font-semibold text-srms-forest">{card.mark}</span>
                 </div>
                 <h3 className="mt-6 text-xl font-semibold text-srms-ink transition group-hover:text-srms-forest">{card.tag}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-srms-ink-soft">{card.summary}</p>
+                <ul className="mt-4 space-y-2">
+                  {card.activities.slice(0, 4).map((activity) => (
+                    <li key={activity} className="flex items-start gap-2 text-xs text-srms-ink-soft">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-srms-amber" />
+                      {activity}
+                    </li>
+                  ))}
+                </ul>
                 <p className="mt-6 text-sm font-semibold text-srms-forest transition group-hover:text-srms-amber">
                   Learn more <span aria-hidden="true">→</span>
                 </p>
@@ -161,8 +143,8 @@ const Programs = () => {
       <section id="program-impact" className="px-4 py-14 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="rounded-[2.5rem] bg-srms-forest px-6 py-16 text-center sm:px-12">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-amber">Program Impact</p>
-            <h2 className="mt-3 text-3xl font-semibold text-srms-sand sm:text-4xl">Measured, shared, growing</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-amber">Our Foundation</p>
+            <h2 className="mt-3 text-3xl font-semibold text-srms-sand sm:text-4xl">Small start, real roots</h2>
             <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-3">
               {impactStats.map((stat) => (
                 <div key={stat.label} className="rounded-3xl bg-white/10 p-8">
@@ -172,8 +154,9 @@ const Programs = () => {
               ))}
             </div>
             <p className="mx-auto mt-8 max-w-xl text-xs text-srms-sand/60">
-              Figures reflect our verified program records and are reviewed
-              before publication.
+              As partnerships and donations grow, so does our reach. The first
+              year is designed to begin with limited resources and expand with
+              community support.
             </p>
           </div>
         </div>
@@ -194,8 +177,11 @@ const Programs = () => {
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="text-xs font-semibold text-srms-amber">Student story</p>
-                  <p className="mt-3 text-sm leading-relaxed text-srms-ink">"{story} placeholder — team will replace."</p>
+                  <p className="text-xs font-semibold text-srms-amber">Field story</p>
+                  <h3 className="mt-3 text-base font-semibold text-srms-ink">{story}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-srms-ink-soft">
+                    We are collecting this story from our programs in {org.location}. It will be published with permission.
+                  </p>
                   <p className="mt-auto pt-5 text-sm font-semibold text-srms-forest">Read story <span aria-hidden="true">→</span></p>
                 </div>
               </article>
@@ -218,10 +204,17 @@ const Programs = () => {
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {[0, 1, 2, 3, 4, 5].map((n) => (
-              <div key={n} className="flex h-56 items-center justify-center rounded-[2rem] border-2 border-dashed border-srms-clay/70 bg-srms-clay/20">
+            {[
+              'Faith & values session',
+              'Community cleaning',
+              'Kitchen garden',
+              'Talent club practice',
+              'ICT & digital skills',
+              'School-material support'
+            ].map((label) => (
+              <div key={label} className="flex h-56 items-center justify-center rounded-[2rem] border-2 border-dashed border-srms-clay/70 bg-srms-clay/20">
                 <p className="px-6 text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-srms-ink-soft">
-                  Photo slot {n + 1} — coming soon
+                  {label} — photo coming soon
                 </p>
               </div>
             ))}
@@ -238,7 +231,7 @@ const Programs = () => {
               Be part of the change
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-srms-ink-soft">
-              Every program is carried by hands like yours. Volunteer, partner
+              Every pillar is carried by hands like yours. Volunteer, partner
               or support our work today.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">

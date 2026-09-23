@@ -6,6 +6,9 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Programs from './pages/Programs'
 import Impact from './pages/Impact'
+import NewsEvents from './pages/NewsEvents'
+import Contact from './pages/Contact'
+import GetInvolved from './pages/GetInvolved'
 import Placeholder from './pages/Placeholder'
 
 const ScrollToTop = () => {
@@ -15,8 +18,6 @@ const ScrollToTop = () => {
   }, [pathname])
   return null
 }
-
-const exportedPages = ['/news', '/contact', '/get-involved']
 
 const App = () => (
   <HashRouter>
@@ -31,15 +32,18 @@ const App = () => (
         <Route path="/about/our-values" element={<About />} />
         <Route path="/about/our-team" element={<About />} />
         <Route path="/programs" element={<Programs />} />
-        <Route path="/programs/all" element={<Programs />} />
-        <Route path="/programs/school-programs" element={<Programs />} />
-        <Route path="/programs/family-community" element={<Programs />} />
-        <Route path="/programs/youth-development" element={<Programs />} />
+        <Route path="/programs/faith-prayer" element={<Programs />} />
+        <Route path="/programs/helping-others" element={<Programs />} />
+        <Route path="/programs/youth-transformation" element={<Programs />} />
+        <Route path="/programs/talent-ict" element={<Programs />} />
         <Route path="/impact" element={<Impact />} />
+        <Route path="/news" element={<NewsEvents />} />
+        <Route path="/news/latest" element={<NewsEvents />} />
+        <Route path="/news/events" element={<NewsEvents />} />
+        <Route path="/news/past-events" element={<NewsEvents />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/get-involved" element={<GetInvolved />} />
         <Route path="/newsletter" element={<Placeholder />} />
-        {exportedPages.map((path) => (
-          <Route key={path} path={path} element={<Placeholder />} />
-        ))}
         <Route path="*" element={<Placeholder />} />
       </Routes>
       <Footer />

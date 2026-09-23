@@ -1,82 +1,91 @@
 import { Link } from 'react-router-dom'
-import Logo from '../components/Logo'
+import { org, pillars } from '../data/site'
 
 const heroStats = [
-  { value: '6,400+', label: 'Children enrolled in schools we helped build' },
-  { value: '12,000+', label: 'Students & families reached' },
-  { value: '87', label: 'Projects completed across 3 regions' }
+  { value: '2017', label: 'A student initiative begins at Muhazi Secondary School' },
+  { value: '16', label: 'Members on our shared leadership committee' },
+  { value: '9', label: 'Young founders who formed the foundation in 2025' },
+  { value: '4', label: 'Interconnected pillars of our work' }
 ]
 
 const programCards = [
   {
-    tag: 'School Programs',
-    title: 'Books in hand, futures in motion',
-    text: 'We build and renovate classrooms, supply learning materials, and train teachers so every child can learn with dignity.',
-    to: '/programs/school-programs'
+    tag: pillars[0].tag,
+    title: 'Values rooted in faith',
+    text: pillars[0].summary,
+    to: pillars[0].to
   },
   {
-    tag: 'Family & Community Support',
-    title: 'Stronger homes, stronger futures',
-    text: 'Food security gardens, skills workshops, and family counselling help families grow stable and hopeful.',
-    to: '/programs/family-community'
+    tag: pillars[1].tag,
+    title: 'Service that reaches the vulnerable',
+    text: pillars[1].summary,
+    to: pillars[1].to
   },
   {
-    tag: 'Youth Development',
-    title: 'Young hands shaping tomorrow',
-    text: 'Mentorship, leadership camps, and vocational training turn young people into agents of change.',
-    to: '/programs/youth-development'
+    tag: pillars[2].tag,
+    title: 'Young leaders in the making',
+    text: pillars[2].summary,
+    to: pillars[2].to
+  },
+  {
+    tag: pillars[3].tag,
+    title: 'Talent, digital skills & creativity',
+    text: pillars[3].summary,
+    to: pillars[3].to
   }
 ]
 
 const impactList = [
-  '12,000+ students & family members reached',
-  '6,400+ children learning in classrooms we helped build',
-  '87 projects completed in 3 regions',
-  '240+ active volunteers and partners'
+  'Youth leadership training, mentorship and discussion forums',
+  'School-material support for vulnerable students',
+  'Kitchen gardens and support for vulnerable families',
+  'Umuganda, tree planting and community cleaning',
+  'ICT and digital-skills training for young people',
+  'An annual talent showcase for young creators'
 ]
 
 const getInvolvedSteps = [
   {
     tag: '01',
     title: 'Volunteer',
-    text: 'Give a few hours or a season — teach, garden, or help at community events.',
-    to: '/get-involved/volunteer'
+    text: 'Give a few hours or a season — serve in schools, at events, or in the community.',
+    to: '/get-involved'
   },
   {
     tag: '02',
     title: 'Partner With Us',
-    text: 'Businesses, schools, and faith groups can power our programs through partnership.',
-    to: '/get-involved/partner'
+    text: 'Schools, organizations, businesses and faith groups can power our four pillars.',
+    to: '/get-involved'
   },
   {
     tag: '03',
     title: 'Support Our Work',
-    text: 'Recurring gifts and one-time donations turn small acts into lasting change.',
-    to: '/get-involved/support'
+    text: 'One-time or recurring gifts, materials, or our social enterprises all keep us going.',
+    to: '/get-involved'
   }
 ]
 
 const newsList = [
   {
-    tag: 'News',
-    date: '12 Sep 2026',
-    title: 'New classroom block opens in Kagugu',
-    text: 'Volunteers and families came together to complete a three-room block serving 120 students.',
-    to: '/news/new-classroom-block-kagugu'
-  },
-  {
-    tag: 'Event',
-    date: '21 Nov 2026',
-    title: 'Hands of Hope Community Fun Day',
-    text: 'Games, food, workshops, and music — an open day to celebrate our shared work.',
-    to: '/news/hands-of-hope-fun-day'
+    tag: 'Story',
+    date: '2025',
+    title: 'From a school club to a foundation',
+    text: 'Nine active members transformed a seven-year student initiative into a community-based foundation.',
+    to: '/news/from-a-school-club-to-a-foundation'
   },
   {
     tag: 'Activity',
-    date: 'Monthly',
-    title: 'Garden harvest & food-share',
-    text: 'Volunteers harvest school gardens and pack food baskets for families in need.',
-    to: '/news/garden-harvest'
+    date: 'Ongoing',
+    title: 'Umuganda: young hands in the community',
+    text: 'Volunteers join community cleaning, tree planting and environmental protection activities.',
+    to: '/news/umuganda-young-hands'
+  },
+  {
+    tag: 'Activity',
+    date: 'Ongoing',
+    title: 'Kitchen gardens for families in need',
+    text: 'We establish kitchen gardens and share food with vulnerable families in our community.',
+    to: '/news/kitchen-gardens-for-families'
   }
 ]
 
@@ -88,17 +97,17 @@ const Home = () => (
         <div className="mx-auto max-w-6xl">
           <p className="inline-flex items-center gap-2.5 rounded-full border border-srms-clay/70 bg-white/80 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.3em] text-srms-forest">
             <span className="h-2 w-2 rounded-full bg-srms-amber" />
-            Building hope since 2019
+            Youth-led since 2017
           </p>
           <h1 className="mt-8 max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight text-srms-ink sm:text-6xl">
             Foundation
             <br />
-            <span className="text-srms-forest">By Our Hands</span>
+            <span className="text-srms-forest">By Our Hands We Can</span>
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-relaxed text-srms-ink-soft">
-            We are a community-driven charity building schools, strengthening
-            families, and growing opportunities for young people — one
-            community at a time. When we work together, every hand matters.
+            {org.tagline}. We are a youth-led community foundation rooted in
+            faith, service, transformation and talent &amp; ICT — empowering a
+            better generation, one hand at a time.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -121,7 +130,7 @@ const Home = () => (
           <h2 className="mt-16 text-xs font-semibold uppercase tracking-[0.3em] text-srms-ink-soft">
             Our impact at a glance
           </h2>
-          <div className="mt-7 grid gap-4 sm:grid-cols-3">
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {heroStats.map((stat) => (
               <div key={stat.value} className="rounded-3xl border border-srms-clay/70 bg-white p-6">
                 <p className="text-3xl font-semibold text-srms-forest">{stat.value}</p>
@@ -148,7 +157,7 @@ const Home = () => (
           </Link>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {programCards.map((card) => (
             <Link
               key={card.to}
@@ -179,13 +188,14 @@ const Home = () => (
               Who we serve
             </p>
             <h2 className="mt-3 text-3xl font-semibold text-srms-sand">
-              Children, families, and communities
+              Young people, families, schools &amp; communities
             </h2>
             <p className="mt-5 max-w-xl leading-relaxed text-srms-sand/85">
-              Everyone has gifts to offer. We walk alongside children in need of
-              schooling, families working toward stability, and young people
-              growing into leaders — because stronger people build stronger
-              communities.
+              We believe young people are not only beneficiaries of
+              development — they are its contributors and leaders. We walk
+              alongside young people, vulnerable students and families,
+              schools and the wider community, helping each of them contribute
+              with what they have.
             </p>
 
             <div className="mt-8 space-y-3">
@@ -207,12 +217,10 @@ const Home = () => (
               A message from our founder
             </p>
             <p className="mt-6 text-xl leading-relaxed text-srms-sand italic">
-              "The village raised us. Now we gather every hand we can find to
-              raise the next generation — not with charity from above, but
-              with community working together."
+              "{org.motto}"
             </p>
             <p className="mt-6 text-sm font-semibold text-srms-sand">
-              — Keid, Founder
+              — {org.executiveDirector}, Executive Director
             </p>
           </div>
         </div>

@@ -1,69 +1,48 @@
 import { Link, NavLink } from 'react-router-dom'
-import LogoMark from '../components/Logo'
+import { LogoMark } from '../components/Logo'
+import { budget, budgetTotal, pillars } from '../data/site'
 
 const heroStats = [
-  { value: '15+', label: 'Schools supported', period: 'since 2019' },
-  { value: '500+', label: 'Students reached', period: 'since 2019' },
-  { value: '10+', label: 'Activities delivered', period: 'in the last year' },
-  { value: '10+', label: 'Communities engaged', period: 'across 3 regions' }
+  { value: '2017', label: 'A student initiative at Muhazi Secondary School', period: 'how it all began' },
+  { value: '16', label: 'Members on our shared committee', period: 'established in the early years' },
+  { value: '9', label: 'Young founders in 2025', period: 'when the foundation was formed' },
+  { value: '4', label: 'Interconnected pillars', period: 'faith, service, transformation, talent & ICT' }
 ]
 
 const locations = [
-  { name: 'Kigali', schools: '0 schools', note: 'COMING NEXT' },
-  { name: 'Northern Province', schools: '0 schools', note: 'COMING NEXT' },
-  { name: 'Eastern Province', schools: 'ES MUHAZI', note: 'Youth club and community support activities.' },
-  { name: 'Southern Province', schools: '0 school', note: 'COMING NEXT.' }
+  { name: 'Kagarama', schools: 'Program headquarters', note: 'Where Foundation By Our Hands We Can is being implemented — Kicukiro District, Kigali City.' },
+  { name: 'Kicukiro District', schools: 'Our home district', note: 'Community outreach and youth activities across the district.' },
+  { name: 'Kigali City', schools: 'Capital, Rwanda', note: 'Our first programs are taking shape here, with room to grow.' },
+  { name: 'Muhazi Secondary School', schools: 'Where it began', note: 'The student initiative that started the vision in 2017.' }
 ]
 
-const programImpact = [
-  {
-    tag: 'School Programs',
-    title: 'Schools, classrooms, learning',
-    stats: [
-      { value: '1', label: 'Schools reached' },
-      { value: '500+', label: 'Students participated' }
-    ],
-    to: '/programs/school-programs'
-  },
-  {
-    tag: 'Family & Community Support',
-    title: 'Families growing stable and hopeful',
-    stats: [
-      { value: '8+', label: 'Communities reached' },
-      { value: '15+', label: 'Activities delivered' }
-    ],
-    to: '/programs/family-community'
-  },
-  {
-    tag: 'Youth Development',
-    title: 'Young people stepping up',
-    stats: [
-      { value: '500+', label: 'Youth engaged' },
-      { value: '1', label: 'Youth clubs running' }
-    ],
-    to: '/programs/youth-development'
-  }
-]
+const programImpact = pillars.map((pillar) => ({
+  tag: pillar.tag,
+  title: pillar.title,
+  activities: pillar.activities,
+  to: pillar.to
+}))
 
 const beforeAfter = [
-  { before: 'Classrooms overcrowded or shared between shifts', after: 'Purpose-built classrooms with space for every learner' },
-  { before: 'Children sitting on the floor without books', after: 'Desks, learning materials and stocked reading corners' },
-  { before: 'Families struggling to keep children enrolled', after: 'Gardens and support that help families afford school' },
-  { before: 'Few safe spaces for young people after school', after: 'Youth clubs offering mentorship and skills' }
+  { before: 'Young people have potential and talent but few opportunities, guidance or platforms', after: 'Leadership, mentorship, life skills and discussion forums help them act' },
+  { before: 'Some families face difficulties meeting basic needs', after: 'Community support, food assistance and kitchen gardens build resilience' },
+  { before: 'Vulnerable students may lack essential school materials', after: 'School-material support and mentorship keep children learning' },
+  { before: 'Talents and ICT skills remain undeveloped', after: 'Talent clubs, digital-skills training and innovation activities open doors' }
 ]
 
 const stories = [
-  { place: 'Kigali', title: 'A classroom block, built by many hands', to: '/news/impact-classroom-block' },
-  { place: 'Northern Province', title: 'A school garden that fed a whole term', to: '/news/impact-school-garden' },
-  { place: 'Eastern Province', title: 'Youth club graduates step into leadership', to: '/news/impact-youth-leaders' }
+  { place: 'Kigali', title: 'From a school club to a foundation', to: '/news/from-a-school-club-to-a-foundation' },
+  { place: 'Community', title: 'Kitchen gardens bring food and hope', to: '/news/kitchen-gardens-for-families' },
+  { place: 'Kicukiro', title: 'Umuganda, in our own hands', to: '/news/umuganda-young-hands' }
 ]
 
 const journey = [
-  { year: '2017', label: 'First partner school', mark: 'Kigali' },
-  { year: '2019', label: 'Second region', mark: 'Northern Province' },
-  { year: '2022', label: 'Family support gardens', mark: '8 communities' },
-  { year: '2024', label: 'Youth clubs launch', mark: 'Eastern Province' },
-  { year: '2026', label: '15 schools, 3 regions', mark: 'today' }
+  { year: '2017', label: 'A student initiative begins', mark: 'Muhazi Secondary School' },
+  { year: '2018', label: 'The vision is passed on', mark: 'Nsabimana Jean Marie & Queen Kelly' },
+  { year: '2020', label: 'Committee of 16 established', mark: 'Shared leadership' },
+  { year: '2021', label: 'Kitchen gardens and family support', mark: 'Serving the community' },
+  { year: '2025', label: 'A foundation is formed', mark: '9 founding members' },
+  { year: '2026', label: 'First year of programs', mark: 'today' }
 ]
 
 const partners = ['Partner logo', 'Partner logo', 'Partner logo', 'Partner logo']
@@ -97,13 +76,13 @@ const Impact = () => (
               Our Impact
             </p>
             <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-srms-ink sm:text-6xl">
-              Turning action into
+              From student hands
               <br />
-              <span className="text-srms-forest">meaningful change</span>
+              <span className="text-srms-forest">to a foundation</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-srms-ink-soft">
-              Discover the people, schools and communities we've reached, and the
-              progress made through their programs.
+              Discover the young people, families and communities behind our
+              four pillars — and the progress we are making, together.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
@@ -127,8 +106,8 @@ const Impact = () => (
                 <span className="mx-auto flex h-16 w-16">
                   <LogoMark className="h-16 w-16" />
                 </span>
-                <p className="mt-8 text-lg font-semibold tracking-tight text-srms-sand">Foundation</p>
-                <p className="mt-1 text-[11px] uppercase tracking-[0.32em] text-srms-sand/75">By Our Hands</p>
+                <p className="mt-8 text-center text-lg font-semibold tracking-tight text-srms-sand">Foundation</p>
+                <p className="mt-1 text-center text-[11px] uppercase tracking-[0.32em] text-srms-sand/75">By Our Hands We Can</p>
               </div>
             </div>
           </div>
@@ -150,7 +129,7 @@ const Impact = () => (
     <section id="where-we-work" className="px-4 py-14 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-forest">Where We Work</p>
-        <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Our reach across Rwanda</h2>
+        <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Rooted in Kigali, born in a school</h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {locations.map((loc) => (
             <div key={loc.name} className="rounded-3xl border border-srms-clay/70 bg-white p-7">
@@ -167,27 +146,27 @@ const Impact = () => (
     <section id="impact-by-program" className="px-4 py-14 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-forest">Impact by Program</p>
-        <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Change, connected to each program</h2>
+        <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Change, connected to each pillar</h2>
         <p className="mt-4 max-w-2xl text-srms-ink-soft">
-          What we do leads to what changed. Here is the evidence behind each
-          program area.
+          What we do leads to what changes. Here is what each of our four
+          pillars exists to create.
         </p>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {programImpact.map((program) => (
             <div key={program.title} className="flex flex-col rounded-3xl border border-srms-clay/70 bg-white p-7">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-srms-forest">{program.tag}</p>
               <h3 className="mt-3 text-lg font-semibold text-srms-ink">{program.title}</h3>
-              <div className="mt-6 grid gap-5">
-                {program.stats.map((stat) => (
-                  <div key={stat.label}>
-                    <p className="text-3xl font-semibold text-srms-ink">{stat.value}</p>
-                    <p className="mt-1 text-sm text-srms-ink-soft">{stat.label}</p>
-                  </div>
+              <ul className="mt-5 space-y-2.5">
+                {program.activities.slice(0, 4).map((activity) => (
+                  <li key={activity} className="flex items-start gap-2 text-sm text-srms-ink-soft">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-srms-amber" />
+                    {activity}
+                  </li>
                 ))}
-              </div>
+              </ul>
               <Link
                 to={program.to}
-                className="group mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-srms-forest transition hover:text-srms-amber"
+                className="group mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-srms-forest transition hover:text-srms-amber"
               >
                 View Program
                 <span aria-hidden="true" className="transition group-hover:translate-x-1">→</span>
@@ -204,15 +183,15 @@ const Impact = () => (
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-forest">What Has Changed?</p>
         <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Small steps, measured over time</h2>
         <p className="mt-4 max-w-2xl text-srms-ink-soft">
-          We focus on changes we can see and verify — enrolment, participation
-          and access — rather than making claims we can't back up.
+          We focus on changes we can see and verify — participation, support
+          delivered and skills gained — rather than making claims we can't back up.
         </p>
         <div className="mt-10 overflow-hidden rounded-3xl border border-srms-clay/70 bg-white">
           <div className="grid divide-y divide-srms-clay/50 md:grid-cols-2 md:divide-y-0">
             <div className="p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-srms-ink-soft">Before</p>
               <ul className="mt-5 space-y-3">
-                {beforeAfter.slice(0, 3).map((item) => (
+                {beforeAfter.map((item) => (
                   <li key={item.before} className="text-sm leading-relaxed text-srms-ink-soft">
                     {item.before}
                   </li>
@@ -222,7 +201,7 @@ const Impact = () => (
             <div className="bg-srms-sand/40 p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-srms-forest">After</p>
               <ul className="mt-5 space-y-3">
-                {beforeAfter.slice(0, 3).map((item) => (
+                {beforeAfter.map((item) => (
                   <li key={item.after} className="text-sm leading-relaxed text-srms-ink">
                     {item.after}
                   </li>
@@ -281,25 +260,31 @@ const Impact = () => (
       </div>
     </section>
 
-    {/* 7. Impact reports */}
+    {/* 7. First-year budget */}
     <section id="reports" className="px-4 py-14 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-forest">Impact Reports</p>
-        <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">What we share, openly</h2>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-forest">How We Plan To Spend</p>
+        <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Our first-year budget, openly</h2>
+        <p className="mt-4 max-w-2xl text-srms-ink-soft">
+          A small-start budget of {budgetTotal} RWF that lets us begin with
+          limited resources and expand as partnerships and donations grow.
+        </p>
         <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {[2025, 2024, 2023].map((year) => (
-            <div key={year} className="flex flex-col justify-between gap-6 rounded-3xl border border-srms-clay/70 bg-white p-7 sm:flex-row sm:items-center">
+          {budget.map((item) => (
+            <div key={item.category} className="flex flex-col justify-between gap-6 rounded-3xl border border-srms-clay/70 bg-white p-7 sm:flex-row sm:items-center">
               <div>
-                <h3 className="text-lg font-semibold text-srms-ink">{year} Impact Report</h3>
-                <p className="mt-2 text-sm leading-relaxed text-srms-ink-soft">
-                  Annual overview of our programs and their results.
-                </p>
+                <h3 className="text-lg font-semibold text-srms-ink">{item.category}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-srms-ink-soft">{item.activities}</p>
               </div>
               <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-srms-clay/70 px-5 py-2.5 text-sm font-semibold text-srms-forest">
-                View Report <span aria-hidden="true">→</span>
+                {item.amount} RWF
               </span>
             </div>
           ))}
+        </div>
+        <div className="mt-4 rounded-3xl bg-srms-forest px-7 py-6 text-center text-srms-sand sm:flex sm:items-center sm:justify-between">
+          <p className="text-lg font-semibold">Total estimated budget — first year</p>
+          <p className="text-2xl font-semibold text-srms-amber">{budgetTotal} RWF</p>
         </div>
       </div>
     </section>
@@ -309,6 +294,12 @@ const Impact = () => (
       <div className="mx-auto max-w-6xl">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-srms-forest">Partners &amp; Supporters</p>
         <h2 className="mt-3 text-3xl font-semibold text-srms-ink sm:text-4xl">Working hand in hand</h2>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-srms-ink-soft">
+          We seek to build partnerships with schools, communities, government
+          institutions, civil society organizations and private-sector actors
+          committed to youth development. Logos will appear here once partners
+          agree to be represented.
+        </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {partners.map((partner, index) => (
             <div key={index} className="flex h-24 items-center justify-center rounded-3xl border border-srms-clay/70 bg-white p-6">
@@ -330,8 +321,8 @@ const Impact = () => (
             Help us create more impact
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-srms-ink-soft">
-            Together we can reach more schools, support more young people and
-            strengthen more communities.
+            Together we can reach more young people, support more families and
+            strengthen more communities — hand in hand.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
